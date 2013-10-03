@@ -45,7 +45,14 @@ SRCS		 = err.c \
 		   getopt_long.c \
 		   up_cxxinitialize.c \
 		   pid/pid.c \
-		   geo/geo.c \
 		   systemlib.c \
 		   airspeed.c \
-		   system_params.c
+		   system_params.c \
+		   mavlink_log.c \
+		   rc_check.c \
+		   ecl/attitude_fw/ecl_pitch_controller.cpp \
+		   ecl/attitude_fw/ecl_roll_controller.cpp \
+		   ecl/attitude_fw/ecl_yaw_controller.cpp \
+		   ecl/l1/ecl_l1_pos_controller.cpp \
+		   external_lgpl/tecs/tecs.cpp \
+		   geo/geo.c	

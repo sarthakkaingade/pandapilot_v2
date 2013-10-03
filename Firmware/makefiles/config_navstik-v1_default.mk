@@ -65,6 +65,7 @@ MODULES		+= systemcmds/config
 #
 MODULES		+= modules/commander
 MODULES		+= modules/mavlink
+MODULES		+= modules/navigator
 MODULES		+= modules/mavlink_onboard
 # MODULES		+= modules/gpio_led
 
@@ -72,22 +73,24 @@ MODULES		+= modules/mavlink_onboard
 # Estimation modules (EKF / other filters)
 #
 MODULES		+= modules/attitude_estimator_ekf
-MODULES		+= modules/attitude_estimator_so3_comp
-MODULES		+= modules/position_estimator
+#MODULES		+= modules/attitude_estimator_so3_comp
+MODULES		+= modules/position_estimator_inav
 MODULES		+= modules/att_pos_estimator_ekf
-MODULES		+= examples/flow_position_estimator
+#MODULES		+= examples/flow_position_estimator
 
 #
 # Vehicle Control
 #
-MODULES		+= modules/segway
-MODULES		+= modules/fixedwing_backside
-MODULES		+= modules/fixedwing_att_control
-MODULES		+= modules/fixedwing_pos_control
+#MODULES		+= modules/segway
+#MODULES		+= modules/fixedwing_backside
+#MODULES		+= modules/fixedwing_att_control
+#MODULES		+= modules/fixedwing_pos_control
+MODULES		+= modules/fw_pos_control_l1
+MODULES		+= modules/fw_att_control
 MODULES		+= modules/multirotor_att_control
 MODULES		+= modules/multirotor_pos_control
-MODULES		+= examples/flow_position_control
-MODULES		+= examples/flow_speed_control
+#MODULES		+= examples/flow_position_control
+#MODULES		+= examples/flow_speed_control
 
 #
 # Logging
@@ -133,7 +136,7 @@ LIBRARIES	+= modules/mathlib/CMSIS
 
 # Tutorial code from
 # https://pixhawk.ethz.ch/px4/dev/example_fixedwing_control
-MODULES			+= examples/fixedwing_control
+#MODULES			+= examples/fixedwing_control
 
 #
 # Transitional support - add commands from the NuttX export archive.
