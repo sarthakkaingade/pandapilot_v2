@@ -596,13 +596,7 @@ NAVSTIK::task_main()
 				rc_in.values[i] = ppm_buffer[i];
 			}
 			rc_in.timestamp = ppm_last_valid_decode;
-
-			/* lazily advertise on first publication */
-			if (to_input_rc == 0) {
-				to_input_rc = orb_advertise(ORB_ID(input_rc), &rc_in);
-			} else { 
-				orb_publish(ORB_ID(input_rc), to_input_rc, &rc_in);
-			}
+		
 		}
 #endif
 #ifdef CONFIG_ARCH_BOARD_NAVSTIK_V1
@@ -612,7 +606,12 @@ for (uint8_t i=0; i<rc_in.channel_count; i++) {
 	rc_in.values[i] = rc_buffer[i];
 }
 #endif
-
+/* lazily advertise on first publication */
+			if (to_input_rc == 0) {
+				to_input_rc = orb_advertise(ORB_ID(input_rc), &rc_in);
+			} else { 
+				orb_publish(ORB_ID(input_rc), to_input_rc, &rc_in);
+			}
 	}
 
 	::close(_t_actuators);

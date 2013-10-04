@@ -923,7 +923,7 @@ Sensors::gyro_init()
 
 void
 Sensors::mag_init()
-{
+{	/*
 	int	fd;
 	int	ret;
 
@@ -934,18 +934,18 @@ Sensors::mag_init()
 		errx(1, "FATAL: no magnetometer found");
 	}
 
-	/* try different mag sampling rates */
+	/* try different mag sampling rates 
 
 
 	ret = ioctl(fd, MAGIOCSSAMPLERATE, 150);
 	if (ret == OK) {
-		/* set the pollrate accordingly */
+		/* set the pollrate accordingly 
 		ioctl(fd, SENSORIOCSPOLLRATE, 150);
 	} else {
 		ret = ioctl(fd, MAGIOCSSAMPLERATE, 100);
-		/* if the slower sampling rate still fails, something is wrong */
+		/* if the slower sampling rate still fails, something is wrong 
 		if (ret == OK) {
-			/* set the driver to poll also at the slower rate */
+			/* set the driver to poll also at the slower rate 
 			ioctl(fd, SENSORIOCSPOLLRATE, 100);
 		} else {
 			errx(1, "FATAL: mag sampling rate could not be set");
@@ -961,6 +961,22 @@ Sensors::mag_init()
 		_mag_is_external = true;
 	else
 		_mag_is_external = false;
+
+	close(fd);*/
+	int	fd;
+
+	fd = open(MAG_DEVICE_PATH, 0);
+
+	if (fd < 0) {
+		warn("%s", MAG_DEVICE_PATH);
+		errx(1, "FATAL: no magnetometer found");
+	}
+
+	/* set the mag internal poll rate to at least 150Hz */
+	ioctl(fd, MAGIOCSSAMPLERATE, 150);
+
+	/* set the driver to poll at 150Hz */
+	ioctl(fd, SENSORIOCSPOLLRATE, 150);
 
 	close(fd);
 }
