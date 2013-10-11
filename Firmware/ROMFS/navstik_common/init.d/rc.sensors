@@ -25,19 +25,21 @@ then
 	bmp180 start
 fi
 
+
+sensors start
 #
 # Start the sensor collection task.
 # IMPORTANT: this also loads param offsets
 # ALWAYS start this task before the
 # preflight_check.
 #
-if sensors start
-then
+#if sensors start
+#then
 	#
 	# Check sensors - run AFTER 'sensors start'
 	#
-	preflight_check 
-fi
+	#preflight_check &
+#fi
 
 
-pwm_input
+

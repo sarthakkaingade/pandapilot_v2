@@ -76,7 +76,7 @@ commander start
 #
 # Start GPS interface (depends on orb)
 #
-gps start -d /dev/ttyS1 -b 38400
+#gps start -d /dev/ttyS1 -b 38400
  
 #
 # Start the attitude estimator
@@ -105,3 +105,5 @@ if blinkm start
 then
 	blinkm systemstate
 fi
+
+pwm_input
