@@ -853,7 +853,6 @@ Sensors::accel_init()
 
 		/* set the accel internal sampling rate up to at leat 1000Hz */
 		ioctl(fd, ACCELIOCSSAMPLERATE, 1000);
-
 		/* set the driver to poll at 1000Hz */
 		ioctl(fd, SENSORIOCSPOLLRATE, 1000);
 
@@ -861,16 +860,16 @@ Sensors::accel_init()
 
 		/* set the accel internal sampling rate up to at leat 800Hz */
 		ioctl(fd, ACCELIOCSSAMPLERATE, 800);
-
 		/* set the driver to poll at 800Hz */
 		ioctl(fd, SENSORIOCSPOLLRATE, 800);
 		#elif CONFIG_ARCH_BOARD_NAVSTIK_V1
 
-		/* set the accel internal sampling rate up to at leat 800Hz */
-		ioctl(fd, ACCELIOCSSAMPLERATE, 800);
-
-		/* set the driver to poll at 800Hz */
-		ioctl(fd, SENSORIOCSPOLLRATE, 800);
+		/* set the accel internal sampling rate up to at leat 1000Hz */
+		ioctl(fd, ACCELIOCSSAMPLERATE, 1000);
+		
+		/* set the driver to poll at 1000Hz */
+		ioctl(fd, SENSORIOCSPOLLRATE, 1000);
+		
 		#else
 			#error Need a board configuration
 
@@ -900,22 +899,22 @@ Sensors::gyro_init()
 
 		/* set the gyro internal sampling rate up to at least 1000Hz */
 		if (ioctl(fd, GYROIOCSSAMPLERATE, 1000) != OK)
-			ioctl(fd, GYROIOCSSAMPLERATE, 800);
-
+			ioctl(fd, GYROIOCSSAMPLERATE, 1000);
+		
 		/* set the driver to poll at 1000Hz */
 		if (ioctl(fd, SENSORIOCSPOLLRATE, 1000) != OK)
-			ioctl(fd, SENSORIOCSPOLLRATE, 800);
+			ioctl(fd, SENSORIOCSPOLLRATE, 1000);
 
 		#else
 
-		/* set the gyro internal sampling rate up to at least 760Hz */
-		ioctl(fd, GYROIOCSSAMPLERATE, 760);
-
-		/* set the driver to poll at 760Hz */
-		ioctl(fd, SENSORIOCSPOLLRATE, 760);
+		/* set the gyro internal sampling rate up to at least 1000Hz */
+		ioctl(fd, GYROIOCSSAMPLERATE, 1000);
+		
+		/* set the driver to poll at 1000Hz */
+		ioctl(fd, SENSORIOCSPOLLRATE, 1000);
 
 		#endif
-
+		
 		warnx("using system gyro");
 		close(fd);
 	}

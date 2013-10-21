@@ -1186,21 +1186,22 @@ MPU6050::measure()
 
 #if 0
     /*
-     * Swap axes and negate y
-     */
-    int16_t accel_xt = report.accel_y;
-    int16_t accel_yt = ((report.accel_x == -32768) ? 32767 : -report.accel_x);
+	 * Swap axes and negate y
+	 */
+	int16_t accel_yt = report.accel_z;
+	int16_t accel_zt = ((report.accel_y == -32768) ? 32767 : -report.accel_y);
 
-    int16_t gyro_xt = report.gyro_y;
-    int16_t gyro_yt = ((report.gyro_x == -32768) ? 32767 : -report.gyro_x);
+	int16_t gyro_yt = report.gyro_z;
+	int16_t gyro_zt = ((report.gyro_y == -32768) ? 32767 : -report.gyro_y);
 
-    /*
-     * Apply the swap
-     */
-    report.accel_x = accel_xt;
-    report.accel_y = accel_yt;
-    report.gyro_x = gyro_xt;
-    report.gyro_y = gyro_yt;
+	/*
+	 * Apply the swap
+	 */
+	report.accel_y = accel_yt;
+	report.accel_z = accel_zt;
+	report.gyro_y = gyro_yt;
+	report.gyro_z = gyro_zt;
+
 #endif
 
     /*

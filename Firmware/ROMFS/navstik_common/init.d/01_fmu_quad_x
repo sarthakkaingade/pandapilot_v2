@@ -30,13 +30,13 @@ fi
 #if param compare SYS_AUTOCONFIG 1
 #then
 	# Set all params here, then disable autoconfig
-	param set MC_ATTRATE_P                0.14
+	param set MC_ATTRATE_P                0.02
 	param set MC_ATTRATE_I                0
-	param set MC_ATTRATE_D                0.006
-	param set MC_ATT_P                    5.5
+	param set MC_ATTRATE_D                0.001
+	param set MC_ATT_P                    5
 	param set MC_ATT_I                    0
 	param set MC_ATT_D                    0
-	param set MC_YAWPOS_D                 0
+	param set MC_YAWPOS_D                 0.001
 	param set MC_YAWPOS_I                 0
 	param set MC_YAWPOS_P                 0.6
 	param set MC_YAWRATE_D                0
@@ -82,6 +82,8 @@ gps start -d /dev/ttyS1 -b 38400
 # Start the attitude estimator
 #
 attitude_estimator_ekf start
+
+position_estimator_inav start
  
 echo "[init] starting PWM output"
 fmu mode_pwm

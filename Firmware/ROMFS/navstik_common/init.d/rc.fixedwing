@@ -60,18 +60,17 @@ gps start -d /dev/ttyS1 -b 38400
 #
 # Start the attitude estimator
 #
-attitude_estimator_ekf start
+att_pos_estimator_ekf start
  
 echo "[init] starting PWM output"
 fmu mode_pwm
-mixer load /dev/pwm_output /etc/mixers/FMU_AET.mix
+mixer load /dev/pwm_output /etc/mixers/FMU_AERT.mix
 
  
 #
 # Start attitude control
 #
-fixedwing_att_control start
-fixedwing_pos_control start
+fw_att_control start
 
 #
 # Start logging
